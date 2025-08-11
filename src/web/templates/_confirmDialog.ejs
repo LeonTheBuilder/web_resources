@@ -1,0 +1,29 @@
+<dialog id="confirmModal" class="modal">
+    <div class="modal-box p-0">
+        <div class="stats p-0 w-full">
+            <div class="stat p-5">
+                <div class="stat-value">Hi</div>
+                <div class="stat-title">
+                    确定要执行此操作？
+                </div>
+            </div>
+        </div>
+        <div class="join w-full mb-4 px-2 gap-1">
+            <button class="flex-1 btn btn-secondary join-item" onclick="confirmModal.close()">取消
+            </button>
+            <button class="flex-1 btn btn-primary join-item" @click="confirm">确认
+            </button>
+        </div>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+    </form>
+</dialog>
+<script>
+    const showConfirmModal = function () {
+        document.getElementById('confirmModal').showModal();
+    };
+    const closeConfirmModal = function () {
+        document.getElementById('confirmModal').close();
+    };
+</script>

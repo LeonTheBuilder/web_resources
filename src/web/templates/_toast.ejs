@@ -1,0 +1,36 @@
+<div id="toast-container" class="toast toast-top toast-end" style="z-index: 9999;"></div>
+<script>
+    const toast = function (msg, className) {
+        const toastDiv = document.createElement('div');
+        toastDiv.className = className;
+        toastDiv.innerHTML = `<span>${msg}</span>`;
+        document.getElementById('toast-container').appendChild(toastDiv);
+        setTimeout(function () {
+            toastDiv.remove();
+        }, 2500);
+    };
+    const toastOk = function (msg) {
+        toast(msg, 'alert alert-success');
+    };
+    const toastSuccess = function (msg) {
+        toast(msg, 'alert alert-success');
+    };
+    const toastErr = function (msg) {
+        toast(msg, 'alert alert-error');
+    };
+    const toastError = function (msg) {
+        toast(msg, 'alert alert-error');
+    };
+    const toastWarn = function (msg) {
+        toast(msg, 'alert alert-warning');
+    };
+    const toastDeving = function () {
+        toastWarn('功能开发中,将尽快上线,加微信客服功能上线先知道');
+    };
+    const errMsgIf = function (res) {
+        if (res.code !== 'OK') {
+            toastErr(res.message);
+            throw new Error(`errMsgIf ${res.message}`);
+        }
+    }
+</script>
