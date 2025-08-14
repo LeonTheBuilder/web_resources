@@ -212,7 +212,7 @@ const download = async function (downloadUrl, fileName) {
 }
 
 
-async function downloadElementImage(elementId) {
+async function captureAndDownload(elementId) {
     // 获取目标div元素
     const targetDiv = document.getElementById(elementId);
 
