@@ -211,6 +211,28 @@ const download = async function (downloadUrl, fileName) {
     }
 }
 
+
+async function downloadElementImage(elementId) {
+    // 获取目标div元素
+    const targetDiv = document.getElementById(elementId);
+
+    if (!targetDiv) {
+        throw new Error('未找到目标元素');
+    }
+
+    // 使用dom-to-image转换为PNG，使用await等待结果
+    const dataUrl = await domtoimage.toPng(targetDiv);
+
+    // 创建下载链接并触发下载
+    const link = document.createElement('a');
+    link.download = 'dom-screenshot.png';
+    link.href = dataUrl;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+
 const createApp = function (config) {
     (async () => {
         config.delimiters = ['${', '}'];
