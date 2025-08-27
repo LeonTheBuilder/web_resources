@@ -11,6 +11,13 @@
         document.documentElement.setAttribute("data-theme", "light");
         <%- include(`../public/_jslib.js`); %>
         <%- include(`${appcfg.app.rootFolder}/gen/apistub.gen.js`); %>
+        APICaller.addResponseInterceptor(async function (response) {
+            if (response.code === 'need_login') {
+                toastWarn('Please login');
+                window.location.href = '/login';
+                return true;
+            }
+        });
     </script>
 
 </head>
